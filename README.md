@@ -1,36 +1,237 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IABank
 
-## Getting Started
+AI-powered banking analytics dashboard built with modern full-stack technologies.
 
-First, run the development server:
+IABank combines:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+* conversational AI
+* financial analytics
+* fraud monitoring
+* SQL-driven insights
+* interactive dashboards
+
+into a modern fintech-style platform.
+
+---
+
+## Features
+
+* AI financial assistant
+* Banking analytics dashboard
+* Fraud alert monitoring
+* Transaction analytics
+* Interactive charts
+* PostgreSQL integration
+* FastAPI backend
+* Next.js frontend
+* Modern fintech UI
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* [Next.js](https://nextjs.org?utm_source=chatgpt.com)
+* [React](https://react.dev?utm_source=chatgpt.com)
+* [TailwindCSS](https://tailwindcss.com?utm_source=chatgpt.com)
+* [Recharts](https://recharts.org?utm_source=chatgpt.com)
+
+### Backend
+
+* [FastAPI](https://fastapi.tiangolo.com?utm_source=chatgpt.com)
+* [SQLAlchemy](https://www.sqlalchemy.org?utm_source=chatgpt.com)
+* [PostgreSQL](https://www.postgresql.org?utm_source=chatgpt.com)
+* [OpenAI API](https://platform.openai.com?utm_source=chatgpt.com)
+
+### Environment
+
+* [NixOS](https://nixos.org?utm_source=chatgpt.com)
+
+---
+
+# Architecture
+
+```text id="7v6jpj"
+Frontend (Next.js)
+        ↓
+FastAPI Backend
+        ↓
+OpenAI API
+        ↓
+SQL Generation
+        ↓
+PostgreSQL Database
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Dashboard Modules
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Sidebar navigation
+* Analytics topbar
+* KPI cards
+* Transaction charts
+* AI chatbot assistant
+* Transactions table
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+# Database Schema
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## transactions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sql id="jlwm7f"
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    branch TEXT NOT NULL,
+    customer_id INT,
+    amount FLOAT NOT NULL,
+    transaction_type TEXT,
+    status TEXT,
+    transaction_date TIMESTAMP
+);
+```
 
-## Deploy on Vercel
+## customers
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sql id="1j5b89"
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    full_name TEXT,
+    city TEXT,
+    risk_level TEXT,
+    created_at TIMESTAMP
+);
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## fraud_alerts
+
+```sql id="6xmx7m"
+CREATE TABLE fraud_alerts (
+    id SERIAL PRIMARY KEY,
+    transaction_id INT,
+    severity TEXT,
+    description TEXT,
+    created_at TIMESTAMP
+);
+```
+
+---
+
+# Running Locally
+
+## Clone repository
+
+```bash id="jlwm8x"
+git clone https://github.com/YOUR_USERNAME/iabank.git
+```
+
+---
+
+## Frontend
+
+```bash id="jlwm2m"
+npm install
+
+npm run dev
+```
+
+Runs on:
+
+```text id="jlwm2v"
+http://localhost:3000
+```
+
+---
+
+## Backend
+
+```bash id="zjlwmx"
+cd backend
+
+uvicorn main:app --reload
+```
+
+Runs on:
+
+```text id="3cjlwm"
+http://127.0.0.1:8000
+```
+
+---
+
+# PostgreSQL Setup
+
+Initialize database:
+
+```bash id="cjlwm2"
+initdb -D ./postgres-data
+```
+
+Start PostgreSQL:
+
+```bash id="7jlwm4"
+pg_ctl -D ./postgres-data -o "-k /tmp" -l logfile start
+```
+
+Connect:
+
+```bash id="djlwm3"
+psql -h /tmp postgres
+```
+
+---
+
+# Environment Variables
+
+Create:
+
+```text id="jlwm6g"
+backend/.env
+```
+
+Add:
+
+```env id="jlwm5m"
+OPENAI_API_KEY=your_api_key
+```
+
+---
+
+# Future Improvements
+
+* Real-time analytics
+* Fraud prediction models
+* Natural language to SQL
+* Authentication system
+* Live transaction streams
+* AI-generated reports
+* Risk scoring
+* Docker deployment
+* Cloud infrastructure
+
+---
+
+# Inspiration
+
+Inspired by modern fintech platforms such as:
+
+* [Stripe](https://stripe.com?utm_source=chatgpt.com)
+* [Plaid](https://plaid.com?utm_source=chatgpt.com)
+* [Linear](https://linear.app?utm_source=chatgpt.com)
+* [Vercel](https://vercel.com?utm_source=chatgpt.com)
+
+---
+
+# License
+
+MIT License
+
+---
+
+# Author
+
+Andrés Cogordán | Physical Engineering
+AI • Backend • Data • Fintech • High Energy
+
