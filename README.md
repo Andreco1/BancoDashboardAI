@@ -124,7 +124,7 @@ CREATE TABLE fraud_alerts (
 ## Clone repository
 
 ```bash id="jlwm8x"
-git clone https://github.com/YOUR_USERNAME/iabank.git
+git clone https://github.com/Andreco1/BancoDashboardAI.git
 ```
 
 ---
